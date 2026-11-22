@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row"><h2 class="page-heading">Transactions</h2><a class="btn" href="{% url 'transaction_add' %}">+ Add</a></div>
+<div class="card">
+  <form class="filters" method="get">
+    <select name="type"><option value="">All types</option>
+      <option value="income" {% if request.GET.type == 'income' %}selected{% endif %}>Income</option>
+      <option value="expense" {% if request.GET.type == 'expense' %}selected{% endif %}>Expense</option></select>
+    <select name="category"><option value="">All categories</option>
+      {% for c in categories %}<option value="{{ c.id }}" {% if request.GET.category == c.id|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>{% endfor %}</select>
+    <button class="btn">Filter</button>
+  </form>
+  <table>
+    <tr><th>Date</th><th>Category</th><th>Note</th><th>Amount</th><th></th></tr>
+    {% for t in object_list %}
+      <tr><td>{{ t.date }}</td><td>{{ t.category|default:"—" }}</td><td>{{ t.note }}</td>
+        <td class="{{ t.type }}">{% if t.type == 'expense' %}-{% else %}+{% endif %}₹{{ t.amount }}</td>
+        <td><a href="{% url 'transaction_edit' t.pk %}">Edit</a> · <a href="{% url 'transaction_delete' t.pk %}">Delete</a></td></tr>
+    {% empty %}<tr><td colspan="5" class="muted">No transactions found.</td></tr>{% endfor %}
+  </table>
+  {% if is_paginated %}
+  <p>{% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}&type={{ request.GET.type }}&category={{ request.GET.category }}">← Prev</a>{% endif %}
+     Page {{ page_obj.number }} of {{ paginator.num_pages }}
+     {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}&type={{ request.GET.type }}&category={{ request.GET.category }}">Next →</a>{% endif %}</p>
+  {% endif %}
+</div>
+{% endblock %}

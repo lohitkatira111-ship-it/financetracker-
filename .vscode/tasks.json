@@ -1,0 +1,179 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Finance Tracker: Run Server",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"runserver",
+				"127.0.0.1:8000"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Finance Tracker: Run Tests",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Django server",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"runserver",
+				"127.0.0.1:8000"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Django startup",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"check"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Finance Tracker dependencies",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-m",
+				"pip",
+				"install",
+				"-r",
+				"requirements.txt"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Migrate Finance Tracker",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"migrate"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Finance Tracker",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"runserver",
+				"127.0.0.1:8000"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Test Finance Tracker",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check existing users",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-c",
+				"import os; os.environ.setdefault('DJANGO_SETTINGS_MODULE','config.settings'); import django; django.setup(); from django.contrib.auth.models import User; print('\\n'.join(User.objects.values_list('username', flat=True)) or 'NO_USERS')"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List Django accounts",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"manage.py",
+				"shell",
+				"-c",
+				"from django.contrib.auth.models import User; print('\\n'.join(User.objects.values_list('username', flat=True)) or 'NO_USERS')"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Git status",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Initialize project Git",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"init"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage project files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"-A"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review staged project files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage final project changes",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"-A"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

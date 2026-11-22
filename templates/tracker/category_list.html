@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row"><h2 class="page-heading">Categories</h2><a class="btn" href="{% url 'category_add' %}">+ Add</a></div>
+<div class="card"><table>
+  {% for c in object_list %}<tr><td>{{ c.name }}</td><td style="text-align:right"><a href="{% url 'category_delete' c.pk %}">Delete</a></td></tr>
+  {% empty %}<tr><td class="muted">No categories.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

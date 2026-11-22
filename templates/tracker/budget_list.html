@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row"><h2 class="page-heading">Budgets</h2><a class="btn" href="{% url 'budget_add' %}">+ Set budget</a></div>
+<div class="card"><table>
+  {% for b in object_list %}<tr><td>{{ b.category }}</td><td>₹{{ b.monthly_limit }} / month</td>
+    <td style="text-align:right"><a href="{% url 'budget_delete' b.pk %}">Delete</a></td></tr>
+  {% empty %}<tr><td class="muted">No budgets set.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}
